@@ -14,6 +14,7 @@ import unittest
 #             a, b = (a&~b&~c)|(~a&b&c), (~a&b&~c)|(~a&~b&c) 
 #         return a|b  
 
+
 # my solution with counting bits
 class Solution:
     def singleNumber(self, nums):
