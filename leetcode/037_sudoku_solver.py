@@ -42,6 +42,33 @@ class Solution:  # 2364ms
         board = self.solve(board)
 
 
+class Solution:  # 2996ms
+    EMPTY = "."
+    def solveSudoku(self, board):
+        """
+        :type board: List[List[str]]
+        :rtype: void Do not return anything, modify board in-place instead.
+        """
+        def solve(board, fields):
+            if not fields:
+                return
+            y, x = fields.pop()
+            for k in "123456789":
+                row = (board[y][i] for i in range(9))
+                col = (board[i][x] for i in range(9))
+                box = (board[i+y//3*3][j+x//3*3] for i in range(3) for j in range(3))
+                if not any([ k in row, k in col, k in box ]):
+                    board[y][x] = k
+                    solve(board, fields)
+                    if not fields:
+                        return
+            board[y][x] = self.EMPTY
+            fields.append((y, x))
+
+        fields = [(y,x) for y in range(9) for x in range(9)
+                        if board[y][x] == self.EMPTY]
+        solve(board, fields)
+
 
 class BasicTest(unittest.TestCase):
     def test_1(self):
