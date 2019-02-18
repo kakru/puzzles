@@ -40,7 +40,22 @@ class Solution:  # 48 ms, (faster than 61.85%), 13.6 MB (less than 100%)
         return max(profits)
 
 
+class Solution:
+    def maxProfit(self, prices):  # 44 ms, (faster than 84.48%), 13 MB (less than 100%)
+        max_profit, min_price = 0, float('inf')
+        for price in prices:
+            min_price = min(min_price, price)
+            max_profit = max(max_profit, price - min_price)
+        return max_profit
+
+
 class BasicTest(unittest.TestCase):
+    def test_0(self):
+        input_ = []
+        expected_output = 0
+        output = Solution().maxProfit(input_)
+        self.assertEqual(output, expected_output)
+
     def test_1(self):
         input_ = [7,1,5,3,6,4]
         expected_output = 5
