@@ -1,7 +1,7 @@
 #/usr/bin/env python3
 import unittest
 
-class Solution:
+class Solution:  # 60 ms (94,78%), 13.3 MB (100.00%)
     def reverseVowels(self, s: 'str') -> 'str':
         size = len(s)
         if size < 2: return s
@@ -12,12 +12,17 @@ class Solution:
         while i < j:
             while i < j and s[i] not in vowels: i += 1
             while i < j and s[j] not in vowels: j -= 1
-            if s[i] in vowels and s[j] in vowels:
-                s[i], s[j] = s[j], s[i]
-                i += 1
-                j -= 1
+            s[i], s[j] = s[j], s[i]
+            i += 1
+            j -= 1
         return "".join(s)
 
+
+## With Regex (LeetCode)
+# class Solution:
+#     def reverseVowels(self, s):
+#         vowels = re.findall('(?i)[aeiou]', s)
+#         return re.sub('(?i)[aeiou]', lambda m: vowels.pop(), s)
 
 class BasicTest(unittest.TestCase):
     def test_1(self):
