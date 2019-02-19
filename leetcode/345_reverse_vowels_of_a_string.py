@@ -31,14 +31,12 @@ class BasicTest(unittest.TestCase):
         output = Solution().reverseVowels(input_)
         self.assertEqual(output, expected_output)
 
+    def test_2(self):
+        input_ = "hhhhssss"
+        expected_output = "hhhhssss"
+        output = Solution().reverseVowels(input_)
+        self.assertEqual(output, expected_output)
 
-    # def test_all(self):
-    #     for test in [
-    #         [("ab", "ba"), True],
-    #         [("ab", "ab"), False],
-    #         [("aa", "aa"), True],
-    #     ]:
-    #         self.assertEqual(Solution().reverseVowels(*test[0]), test[1])
 
 if __name__ == '__main__':
     unittest.main(verbosity=2)
