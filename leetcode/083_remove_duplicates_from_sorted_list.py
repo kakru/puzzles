@@ -27,6 +27,21 @@ class Solution:
         return head
 
 
+class Solution:  # 52 ms
+    def deleteDuplicates(self, head):
+        if not head or not head.next: return head
+        p = dummy = ListNode(None)
+        dummy.next = head
+        value = None
+        while p.next:
+            while p.next and p.next.val == value:
+                p.next = p.next.next
+            if not p.next: break
+            value = p.next.val
+            p = p.next
+        return dummy.next
+
+
 def show_list(head):
     lst = []
     while head is not None:
