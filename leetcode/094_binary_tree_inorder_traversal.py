@@ -35,7 +35,7 @@ class Node(object):
 #         return result
 
 
-class Solution:
+class Solution:  # iterative
     def inorderTraversal(self, root):
         """
         :type root: TreeNode
@@ -54,6 +54,17 @@ class Solution:
         return result
 
 
+class Solution:  # recursive
+    def inorderTraversal(self, root):
+        """
+        :type root: TreeNode
+        :rtype: List[int]
+        """
+        if root:
+            yield from self.inorderTraversal(root.left)
+            yield root.val
+            yield from self.inorderTraversal(root.right)
+
 
 tree = Node(4, 
             Node(2,
@@ -64,4 +75,5 @@ tree = Node(4,
                 Node(7)),
            )
 
-print(Solution().inorderTraversal(tree))
+print(list(Solution().inorderTraversal(None)))
+print(list(Solution().inorderTraversal(tree)))
